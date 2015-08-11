@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+npm install
+
+export PORT="hubotのListenするポート"
+export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
+export HUBOT_CHATWORK_TOKEN="ChatworkのAPIトークン"
+export HUBOT_CHATWORK_ROOMS="Chatworkの投稿する部屋のID"
+export HUBOT_CHATWORK_API_RATE="350"
+
+forever start -c coffee node_modules/.bin/hubot --name "hubot-b2c" --adapter chatwork
